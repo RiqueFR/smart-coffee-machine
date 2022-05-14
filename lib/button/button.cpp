@@ -1,35 +1,31 @@
 #include "button.h"
 
 Button::Button(int pin) {
-
     this->pin = pin;
+    this->debounceTime = 50;
+    this->lastBebounceTime = 0;
 
     pinMode(pin, INPUT_PULLUP);
 }
 
-bool Button::changed() {
-    bool now = digitalRead(pin); // Lê o estado atual do botão;
-    if (unstable != now) { // Checa se houve mudança;
-        bouncerTime = millis(); // Atualiza timer;
-        unstable = now; // Atualiza estado instável;
-    }else if (millis() - bouncerTime > 10) { // Checa o tempo de trepidação acabou;
-        if (stable != now) { // Checa se a mudança ainda persiste;
-            stable = now; // Atualiza estado estável;
-            return 1;
+bool Button::wasPressed() {
+    int read = digitalRead(pin);                       //A variável read recebe a read do pino do botão: HIGH (pressionado) ou LOW (Desacionado)
+    bool flag = false;
+
+    if (read != lastStatus) {                     //Se a read atual for diferente da read anterior
+        lastBebounceTime = millis();                       //Reseta a variável lastBebounceTime atribuindo o tempo atual para uma nova contagem
+    }
+
+    if ((millis() - lastBebounceTime) > debounceTime) { //Se o resultado de (tempo atual - lastBebounceTime) for maior que o tempo que determinamos (debounceTime), ou seja, já passou os 50 milissegundos que é o tempo que o botão precisa ficar pressionado para ter a certeza de que ele realmente foi pressionado? Se sim faça:
+        if (read != status) {                         //Verifica se a read do botão mudou, ou seja, se é diferente do status que o botão tinha da última vez. Se sim, faça:
+        status = read;                              //status recebe o que foi lido na variável read (pressionado = 1 e não pressionado = 0)
+        if (status == HIGH) {                          //Se o status é igual a HIGH significa que o botão foi pressionado, então faça:
+            flag = true;                                       //Incrementa +1 na variável contador. (contador++ é o mesmo que: contador = contador +1)
+        }
         }
     }
-    return 0;
-}
-
-bool Button::wasPressed() {
-    if(changed() && pressed == 0){
-        pressed = 1;
-        return 1;
-    }else if(changed() && pressed == 1){
-        pressed = 0;
-    }
-    
-    return 0;
+    lastStatus = read;                            //Atualiza a variável lastStatus para o que foi lido na variável read
+    return flag;
 }
 
 Button::~Button(){}

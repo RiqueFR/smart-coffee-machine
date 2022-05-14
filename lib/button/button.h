@@ -7,15 +7,13 @@
 class Button {
     private:
         int pin;
-        int bouncerTime;
-        bool pressed;
-        bool stable;
-        bool unstable;
+        unsigned long debounceTime;
+        unsigned long lastBebounceTime;
+        int status;
+        int lastStatus;
     
     public:
         Button(int pin);
-
-        bool changed();
 
         bool wasPressed();
 
