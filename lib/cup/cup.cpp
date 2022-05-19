@@ -4,6 +4,11 @@ Cup::Cup(int trigPin, int echoPin)
         : Ultrasonic(trigPin, echoPin) {}
 
 bool Cup::checkCup() {
-    if (this->getDistanceMm() < 50) return true;
-    return false;
+    float distance = this->getDistanceMm();
+
+    while(distance > 300){
+        distance = this->getDistanceMm();
+    }
+    
+    return distance < 50;    
 }

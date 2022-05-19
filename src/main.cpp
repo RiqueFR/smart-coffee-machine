@@ -2,13 +2,15 @@
 #include <button.h>
 #include <cup.h>
 #include <ultrasonic.h>
-
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+ 
 const int maxCupAmount = 30;
 
-const int trigPinCup = 5;
-const int echoPinCup = 18;
-const int trigPinWat = 19;
-const int echoPinWat = 21;
+const int trigPinCup = 33;
+const int echoPinCup = 35;
+const int trigPinWat = 32;
+const int echoPinWat = 34;
 
 const int buttonRequestPin = 25;
 const int buttonAddCupPin = 26;
@@ -22,10 +24,12 @@ int requestedCups = 0;
 const int mmToCups = 30;
 const int maxMm = 200;
 
-const int portaReleBomba = 34;
-const int portaReleCoffe = 35;
+const int portaReleBomba = 12;
+const int portaReleCoffe = 14;
 
 bool buttonRequestPressed = false;
+
+// LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 Ultrasonic ultrasonic = Ultrasonic(trigPinWat, echoPinWat);
 Cup cup = Cup(trigPinCup, echoPinCup);
@@ -34,12 +38,20 @@ Button buttonAddCup = Button(buttonAddCupPin);
 Button buttonRemoveCup = Button(buttonRemoveCupPin);
 
 void setup() {
-    // pinMode(portaRele, OUTPUT);
+    pinMode(portaReleBomba, OUTPUT);
+    pinMode(portaReleCoffe, OUTPUT);
     pinMode(ledBuiltIn, OUTPUT);
+
+    // lcd.init();
+    // lcd.backlight();
+    // lcd.print("ESP32 - Projeto");
+    // lcd.setCursor(0, 1);
+    // lcd.print("com display!");
+
     Serial.begin(115200);  // Starts the serial communication
 }
 
-void loop() {    
+void loop() {
     float distanceMm = maxMm;
     bool hasCup = cup.checkCup();
 
@@ -60,18 +72,21 @@ void loop() {
         digitalWrite(portaReleCoffe, HIGH);
         digitalWrite(ledBuiltIn, HIGH);
         // enchendo o reservatorio
-        while(actualQtdCup < requestedCups && hasCup){
+        while(actualQtdCup < requestedCups){ // && hasCup){
             distanceMm = ultrasonic.getDistanceMm();
+            // hasCup = cup.checkCup();
+            
+
             if(distanceMm > maxMm){
                 continue;
             }
-            hasCup = cup.checkCup();
-
-            Serial.println("Enchendo reservatorio");
+            
+            Serial.println("Enchendo reservatorio ++++++++++++++");
             Serial.print("Distance (mm): ");
             Serial.println(distanceMm);
-            Serial.print("Tem xícara: ");
-            Serial.println(hasCup);
+            // Serial.print("Tem xícara: ");
+            // Serial.println(hasCup);
+
 
             actualQtdCup = (maxMm - distanceMm) / mmToCups;
             Serial.print("Quantidade atual de xícaras: ");
@@ -84,13 +99,14 @@ void loop() {
         digitalWrite(ledBuiltIn, LOW);
         digitalWrite(portaReleBomba, LOW);
         distanceMm = ultrasonic.getDistanceMm();
-        while(actualQtdCup > 0) { // espera reservatorio esvaziar
+        while(actualQtdCup > 0){// && hasCup) { // espera reservatorio esvaziar
             distanceMm = ultrasonic.getDistanceMm();
+            // hasCup = cup.checkCup();
             if(distanceMm > maxMm){
                 continue;
             }
 
-            Serial.println("Esvaziando reservatorio");
+            Serial.println("Esvaziando reservatorio -------------");
             Serial.print("Distance (mm): ");
             Serial.println(distanceMm);
             actualQtdCup = (maxMm - distanceMm) / mmToCups;
@@ -124,4 +140,3 @@ void loop() {
 
     // delay(100);
 }
-
