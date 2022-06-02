@@ -5851,7 +5851,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="COFFE" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP4E" device="" package3d_urn="urn:adsk.eagle:package:15463/1"/>
-<part name="WATER" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP4E" device="" package3d_urn="urn:adsk.eagle:package:15463/1"/>
+<part name="WATER" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP4E" device="" package3d_urn="urn:adsk.eagle:package:15463/1" value="Water"/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
@@ -5864,9 +5864,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="Q1" library="transistor-npn" library_urn="urn:adsk.eagle:library:398" deviceset="BC546*" device="" package3d_urn="urn:adsk.eagle:package:28989/2" technology="B"/>
 <part name="RELE" library="relay" library_urn="urn:adsk.eagle:library:339" deviceset="G5LE" device="" package3d_urn="urn:adsk.eagle:package:24308/1"/>
 <part name="MOTORVCC" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/2-H" device="" package3d_urn="urn:adsk.eagle:package:9901/1"/>
-<part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
-<part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
-<part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -5880,6 +5877,8 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/7" package3d_urn="urn:adsk.eagle:package:23498/2" value="10K"/>
 <part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/7" package3d_urn="urn:adsk.eagle:package:23498/2" value="3.3K"/>
 <part name="BOARD1" library="ESP32-DEVKITV1-BEST" deviceset="ESP32DEVKITV1" device=""/>
+<part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
+<part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5910,9 +5909,9 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <attribute name="NAME" x="5.08" y="39.37" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="5.08" y="51.435" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="WATER" gate="G$1" x="96.52" y="38.1" smashed="yes" rot="R270">
-<attribute name="NAME" x="96.52" y="41.91" size="1.778" layer="95"/>
-<attribute name="VALUE" x="96.52" y="29.845" size="1.778" layer="96"/>
+<instance part="WATER" gate="G$1" x="109.22" y="40.64" smashed="yes" rot="R270">
+<attribute name="NAME" x="109.22" y="44.45" size="1.778" layer="95"/>
+<attribute name="VALUE" x="109.22" y="32.385" size="1.778" layer="96"/>
 </instance>
 <instance part="P+1" gate="VCC" x="50.8" y="96.52" smashed="yes" rot="R180">
 <attribute name="VALUE" x="53.34" y="99.06" size="1.778" layer="96" rot="R270"/>
@@ -5923,14 +5922,14 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <instance part="P+3" gate="VCC" x="15.24" y="40.64" smashed="yes" rot="R270">
 <attribute name="VALUE" x="12.7" y="43.18" size="1.778" layer="96"/>
 </instance>
-<instance part="P+4" gate="VCC" x="86.36" y="40.64" smashed="yes" rot="R90">
-<attribute name="VALUE" x="88.9" y="38.1" size="1.778" layer="96" rot="R180"/>
+<instance part="P+4" gate="VCC" x="99.06" y="43.18" smashed="yes" rot="R90">
+<attribute name="VALUE" x="101.6" y="40.64" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="GND3" gate="1" x="15.24" y="48.26" smashed="yes" rot="R90">
 <attribute name="VALUE" x="17.78" y="45.72" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND4" gate="1" x="86.36" y="33.02" smashed="yes" rot="R270">
-<attribute name="VALUE" x="83.82" y="35.56" size="1.778" layer="96" rot="R270"/>
+<instance part="GND4" gate="1" x="99.06" y="35.56" smashed="yes" rot="R270">
+<attribute name="VALUE" x="96.52" y="38.1" size="1.778" layer="96" rot="R270"/>
 </instance>
 <instance part="BUTTONADD" gate="-1" x="114.3" y="106.68" smashed="yes" rot="R180">
 <attribute name="NAME" x="115.57" y="105.791" size="1.778" layer="95"/>
@@ -5957,9 +5956,9 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <attribute name="NAME" x="81.28" y="17.78" size="1.778" layer="95"/>
 <attribute name="VALUE" x="81.28" y="15.24" size="1.778" layer="96"/>
 </instance>
-<instance part="RELE" gate="1" x="60.96" y="-2.54" smashed="yes">
-<attribute name="VALUE" x="62.23" y="0.381" size="1.778" layer="96"/>
-<attribute name="PART" x="62.23" y="2.54" size="1.778" layer="95"/>
+<instance part="RELE" gate="1" x="93.98" y="-5.08" smashed="yes">
+<attribute name="VALUE" x="95.25" y="-2.159" size="1.778" layer="96"/>
+<attribute name="PART" x="95.25" y="0" size="1.778" layer="95"/>
 </instance>
 <instance part="RELE" gate="2" x="78.74" y="124.46" smashed="yes">
 <attribute name="PART" x="81.28" y="124.46" size="1.778" layer="95"/>
@@ -5970,15 +5969,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <instance part="MOTORVCC" gate="-2" x="116.84" y="132.08" smashed="yes" rot="R270">
 <attribute name="NAME" x="117.729" y="133.35" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="113.157" y="135.89" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="P+5" gate="VCC" x="99.06" y="111.76" smashed="yes" rot="R90">
-<attribute name="VALUE" x="101.6" y="109.22" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="P+6" gate="VCC" x="99.06" y="88.9" smashed="yes" rot="R90">
-<attribute name="VALUE" x="101.6" y="86.36" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="P+7" gate="VCC" x="99.06" y="66.04" smashed="yes" rot="R90">
-<attribute name="VALUE" x="101.6" y="63.5" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="GND5" gate="1" x="111.76" y="50.8" smashed="yes" rot="R90">
 <attribute name="VALUE" x="114.3" y="48.26" size="1.778" layer="96" rot="R90"/>
@@ -5992,8 +5982,8 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <instance part="P+8" gate="VCC" x="93.98" y="22.86" smashed="yes">
 <attribute name="VALUE" x="91.44" y="20.32" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND8" gate="1" x="60.96" y="-15.24" smashed="yes">
-<attribute name="VALUE" x="58.42" y="-17.78" size="1.778" layer="96"/>
+<instance part="GND8" gate="1" x="93.98" y="-17.78" smashed="yes">
+<attribute name="VALUE" x="91.44" y="-20.32" size="1.778" layer="96"/>
 </instance>
 <instance part="RELEEXT" gate="1" x="5.08" y="55.88" smashed="yes" rot="R90">
 <attribute name="NAME" x="5.08" y="52.07" size="1.778" layer="95" rot="R180"/>
@@ -6024,6 +6014,12 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <instance part="BOARD1" gate="G$1" x="58.42" y="73.66" smashed="yes" rot="R180">
 <attribute name="NAME" x="55.245" y="15.875" size="1.27" layer="95" rot="R180"/>
 </instance>
+<instance part="P+6" gate="VCC" x="99.06" y="88.9" smashed="yes" rot="R90">
+<attribute name="VALUE" x="101.6" y="86.36" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="P+7" gate="VCC" x="99.06" y="66.04" smashed="yes" rot="R90">
+<attribute name="VALUE" x="101.6" y="63.5" size="1.778" layer="96" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -6037,7 +6033,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
 <pinref part="WATER" gate="G$1" pin="4"/>
-<wire x1="88.9" y1="33.02" x2="93.98" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="35.56" x2="106.68" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND3" gate="1" pin="GND"/>
@@ -6047,7 +6043,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <segment>
 <pinref part="GND8" gate="1" pin="GND"/>
 <pinref part="RELE" gate="1" pin="2"/>
-<wire x1="60.96" y1="-12.7" x2="60.96" y2="-7.62" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="-15.24" x2="93.98" y2="-10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="RELEEXT" gate="1" pin="3"/>
@@ -6094,22 +6090,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <segment>
 <pinref part="WATER" gate="G$1" pin="1"/>
 <pinref part="P+4" gate="VCC" pin="VCC"/>
-<wire x1="93.98" y1="40.64" x2="88.9" y2="40.64" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+6" gate="VCC" pin="VCC"/>
-<pinref part="BUTTONREM" gate="-2" pin="KL"/>
-<wire x1="101.6" y1="88.9" x2="109.22" y2="88.9" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+5" gate="VCC" pin="VCC"/>
-<pinref part="BUTTONADD" gate="-2" pin="KL"/>
-<wire x1="101.6" y1="111.76" x2="109.22" y2="111.76" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+7" gate="VCC" pin="VCC"/>
-<pinref part="BUTTONREQ" gate="-2" pin="KL"/>
-<wire x1="101.6" y1="66.04" x2="109.22" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="43.18" x2="101.6" y2="43.18" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="P+8" gate="VCC" pin="VCC"/>
@@ -6121,22 +6102,28 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <pinref part="P+9" gate="VCC" pin="VCC"/>
 <wire x1="7.62" y1="53.34" x2="12.7" y2="53.34" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="P+7" gate="VCC" pin="VCC"/>
+<pinref part="BUTTONREQ" gate="-2" pin="KL"/>
+<wire x1="101.6" y1="66.04" x2="109.22" y2="66.04" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="P+6" gate="VCC" pin="VCC"/>
+<pinref part="BUTTONREM" gate="-2" pin="KL"/>
+<wire x1="101.6" y1="88.9" x2="109.22" y2="88.9" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$1" class="0">
 <segment>
-<wire x1="60.96" y1="40.64" x2="76.2" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="40.64" x2="76.2" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="WATER" gate="G$1" pin="2"/>
-<wire x1="76.2" y1="38.1" x2="93.98" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="40.64" x2="106.68" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="BOARD1" gate="G$1" pin="D32"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
-<wire x1="60.96" y1="38.1" x2="73.66" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="38.1" x2="73.66" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="WATER" gate="G$1" pin="3"/>
-<wire x1="73.66" y1="35.56" x2="93.98" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="38.1" x2="106.68" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="BOARD1" gate="G$1" pin="D35"/>
 </segment>
 </net>
@@ -6165,8 +6152,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <segment>
 <pinref part="RELE" gate="1" pin="1"/>
 <pinref part="Q1" gate="G$1" pin="E"/>
-<wire x1="60.96" y1="2.54" x2="93.98" y2="2.54" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="2.54" x2="93.98" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="0" x2="93.98" y2="5.08" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -6229,12 +6215,12 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <segment>
 <wire x1="60.96" y1="50.8" x2="78.74" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="50.8" x2="78.74" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="BOARD1" gate="G$1" pin="D27"/>
 <pinref part="BUTTONADD" gate="-1" pin="KL"/>
-<wire x1="78.74" y1="106.68" x2="104.14" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="104.14" y1="106.68" x2="109.22" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="106.68" x2="104.14" y2="106.68" width="0.1524" layer="91"/>
 <junction x="104.14" y="106.68"/>
-<pinref part="BOARD1" gate="G$1" pin="D27"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -6246,15 +6232,27 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <pinref part="BOARD1" gate="G$1" pin="D33"/>
 </segment>
 </net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="BUTTONADD" gate="-2" pin="KL"/>
+<wire x1="109.22" y1="111.76" x2="60.96" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="111.76" x2="60.96" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="83.82" x2="10.16" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="83.82" x2="10.16" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="BOARD1" gate="G$1" pin="3V3"/>
+<wire x1="10.16" y1="63.5" x2="20.32" y2="63.5" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
 <errors>
 <approved hash="113,1,50.8,106.728,VCC,,,,,"/>
-<approved hash="113,1,3.90147,43.4746,COFFE,,,,,"/>
-<approved hash="113,1,97.8369,37.8054,WATER,,,,,"/>
+<approved hash="113,1,109.22,134.154,MOTOR,,,,,"/>
+<approved hash="113,1,119.552,106.68,BUTTONADD,,,,,"/>
+<approved hash="113,1,119.695,83.82,BUTTONREM,,,,,"/>
 <approved hash="113,1,119.623,60.96,BUTTONREQ,,,,,"/>
-<approved hash="113,1,2.41531,54.9046,RELEEXT,,,,,"/>
+<approved hash="113,1,121.92,136.814,MOTORVCC,,,,,"/>
 </errors>
 </schematic>
 </drawing>
