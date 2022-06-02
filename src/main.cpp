@@ -7,13 +7,13 @@
  
 const int maxCupAmount = 30;
 
-const int trigPinCup = 33;
-const int echoPinCup = 35;
+const int trigPinCup = 18;
+const int echoPinCup = 5;
 const int trigPinWat = 32;
-const int echoPinWat = 34;
+const int echoPinWat = 35;
 
-const int buttonRequestPin = 25;
-const int buttonAddCupPin = 26;
+const int buttonRequestPin = 25; // laranja
+const int buttonAddCupPin = 26; // azul
 const int buttonRemoveCupPin = 27;
 
 int ledBuiltIn = 2;
@@ -24,8 +24,8 @@ int requestedCups = 0;
 const int mmToCups = 30;
 const int maxMm = 200;
 
-const int portaReleBomba = 12;
-const int portaReleCoffe = 14;
+const int portaReleBomba = 2;
+const int portaReleCoffe = 12;
 
 bool buttonRequestPressed = false;
 
