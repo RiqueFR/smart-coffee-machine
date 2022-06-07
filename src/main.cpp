@@ -2,7 +2,7 @@
 #include <button.h>
 #include <cup.h>
 #include <ultrasonic.h>
-#include <Wire.h>
+#include <Wire.h> // 0x3F
 #include <LiquidCrystal_I2C.h>
  
 const int maxCupAmount = 30;
@@ -29,7 +29,13 @@ const int portaReleCoffe = 12;
 
 bool buttonRequestPressed = false;
 
-// LiquidCrystal_I2C lcd(0x27, 16, 2);
+// set the LCD number of columns and rows
+int lcdColumns = 16;
+int lcdRows = 2;
+
+// set LCD address, number of columns and rows
+// if you don't know your display address, run an I2C scanner sketch
+LiquidCrystal_I2C lcd(0x3F, lcdColumns, lcdRows);
 
 Ultrasonic ultrasonic = Ultrasonic(trigPinWat, echoPinWat);
 Cup cup = Cup(trigPinCup, echoPinCup);
@@ -42,12 +48,9 @@ void setup() {
     pinMode(portaReleCoffe, OUTPUT);
     pinMode(ledBuiltIn, OUTPUT);
 
-    // lcd.init();
-    // lcd.backlight();
-    // lcd.print("ESP32 - Projeto");
-    // lcd.setCursor(0, 1);
-    // lcd.print("com display!");
-
+    lcd.init();
+    lcd.backlight();
+    
     Serial.begin(115200);  // Starts the serial communication
 }
 
@@ -76,6 +79,8 @@ void loop() {
             distanceMm = ultrasonic.getDistanceMm();
             // hasCup = cup.checkCup();
             
+            lcd.setCursor(0,1);
+            lcd.printf("Status: Enchendo");
 
             if(distanceMm > maxMm){
                 continue;
@@ -101,6 +106,10 @@ void loop() {
         distanceMm = ultrasonic.getDistanceMm();
         while(actualQtdCup > 0){// && hasCup) { // espera reservatorio esvaziar
             distanceMm = ultrasonic.getDistanceMm();
+            
+            lcd.setCursor(0,1);
+            lcd.printf("Status: Coando  ");
+
             // hasCup = cup.checkCup();
             if(distanceMm > maxMm){
                 continue;
@@ -117,6 +126,7 @@ void loop() {
         }
 
         digitalWrite(portaReleCoffe, LOW);
+        lcd.clear();
     } else{
         // Serial.println("Não tem xícara");
     }
@@ -127,6 +137,7 @@ void loop() {
             requestedCups++;
         Serial.print("Quantidade de xícaras pedidas: ");
         Serial.println(requestedCups);
+        lcd.clear();
     }
     if (buttonRemoveCup.wasPressed()) {
         Serial.println("Apertou o botão de removeCup");
@@ -134,9 +145,12 @@ void loop() {
             requestedCups--;
         Serial.print("Quantidade de xícaras pedidas: ");
         Serial.println(requestedCups);
+        lcd.clear();
     }
 
-    //Serial.println("Nenhum botão foi apertado");
+    // display code
+    lcd.setCursor(0,0);
+    lcd.printf("xicaras: %d", requestedCups);
 
     // delay(100);
 }
