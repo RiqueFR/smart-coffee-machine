@@ -1,0 +1,1052 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f9d3bd54b791879e",
+        "type": "server-state-changed",
+        "z": "f6f2187d.f17ca8",
+        "name": "Adicionou xícara - Sensor",
+        "server": "b8c951245b20ea89",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "binary_sensor.adicionar_cafe_sensor",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "2b84bc565ddd5fe2"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c91399547b3b53d3",
+        "type": "server-state-changed",
+        "z": "f6f2187d.f17ca8",
+        "name": "Adicionou xícara - HASS",
+        "server": "b8c951245b20ea89",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "button.adicionar_xicaras",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 310,
+        "y": 300,
+        "wires": [
+            [
+                "2b84bc565ddd5fe2"
+            ]
+        ]
+    },
+    {
+        "id": "f6d828394a941453",
+        "type": "server-state-changed",
+        "z": "f6f2187d.f17ca8",
+        "name": "Removeu xícara - Sensor",
+        "server": "b8c951245b20ea89",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "binary_sensor.remover_xicara_sensor",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 310,
+        "y": 420,
+        "wires": [
+            [
+                "e9dfd9d091495dd9"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b20b3a0f78628508",
+        "type": "server-state-changed",
+        "z": "f6f2187d.f17ca8",
+        "name": "Removeu xícara - HASS",
+        "server": "b8c951245b20ea89",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "button.remover_xicaras",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 310,
+        "y": 500,
+        "wires": [
+            [
+                "e9dfd9d091495dd9"
+            ]
+        ]
+    },
+    {
+        "id": "fe0f51b9631f75e7",
+        "type": "server-state-changed",
+        "z": "f6f2187d.f17ca8",
+        "name": "Pediu café - Sensor",
+        "server": "b8c951245b20ea89",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "binary_sensor.pedir_cafe_sensor",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 290,
+        "y": 620,
+        "wires": [
+            [
+                "89d754505ff2d225"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d3f65b077b16866b",
+        "type": "server-state-changed",
+        "z": "f6f2187d.f17ca8",
+        "name": "Pediu café - HASS",
+        "server": "b8c951245b20ea89",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "button.pedir_cafe",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 290,
+        "y": 700,
+        "wires": [
+            [
+                "89d754505ff2d225"
+            ]
+        ]
+    },
+    {
+        "id": "3670f943dc91092b",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "// let qtd = flow.get(\"qtdCup\");\n\n\n// if(qtd >= 0)\n//     qtd--;\n// else\n//     qtd=0;\n\n// if(qtd < 0){\n//     qtd = 0;\n// }\n\n// flow.set(\"qtdCup\", qtd);\n\n// return msg;\n\nlet qtd = msg.payload;\n\nqtd--;\n\nif(qtd < 0)\n    qtd = 0;\n\nmsg.payload = qtd;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 460,
+        "wires": [
+            [
+                "0facceae1b992cb6"
+            ]
+        ]
+    },
+    {
+        "id": "0facceae1b992cb6",
+        "type": "api-call-service",
+        "z": "f6f2187d.f17ca8",
+        "name": "Setar valor",
+        "server": "b8c951245b20ea89",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "number",
+        "service": "set_value",
+        "areaId": [
+            "quarto"
+        ],
+        "deviceId": [
+            "d93535cf5896c22de812288298c4d5c4"
+        ],
+        "entityId": [
+            "number.quantidade_de_xicaras"
+        ],
+        "data": "{ \"value\": msg.payload }",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1030,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89d754505ff2d225",
+        "type": "api-current-state",
+        "z": "f6f2187d.f17ca8",
+        "name": "Pega quantidade de xícaras",
+        "server": "b8c951245b20ea89",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "number.quantidade_de_xicaras",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            },
+            {
+                "property": "qtdCup",
+                "propertyType": "flow",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 600,
+        "y": 660,
+        "wires": [
+            [
+                "48750cd6fa79cb87"
+            ]
+        ]
+    },
+    {
+        "id": "e9dfd9d091495dd9",
+        "type": "api-current-state",
+        "z": "f6f2187d.f17ca8",
+        "name": "Pega quantidade de xícaras",
+        "server": "b8c951245b20ea89",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "number.quantidade_de_xicaras",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 600,
+        "y": 460,
+        "wires": [
+            [
+                "3670f943dc91092b"
+            ]
+        ]
+    },
+    {
+        "id": "2b84bc565ddd5fe2",
+        "type": "api-current-state",
+        "z": "f6f2187d.f17ca8",
+        "name": "Pega quantidade de xícaras",
+        "server": "b8c951245b20ea89",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "num",
+        "halt_if_compare": "is",
+        "entity_id": "number.quantidade_de_xicaras",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "a52d624b52da34cd"
+            ]
+        ]
+    },
+    {
+        "id": "a52d624b52da34cd",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "//let qtd = flow.get(\"qtdCup\");\n\n// if(qtd >= 0)\n//     qtd++;\n// else\n//     qtd=1;\n\n// if(qtd > 30){\n//     qtd = 30;\n// }\n\n//flow.set(\"qtdCup\", qtd);\n\nlet qtd = msg.payload;\n\nqtd++;\n\nif(qtd > 30)\n    qtd = 30;\n\nmsg.payload = qtd;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 260,
+        "wires": [
+            [
+                "0facceae1b992cb6"
+            ]
+        ]
+    },
+    {
+        "id": "48750cd6fa79cb87",
+        "type": "api-current-state",
+        "z": "f6f2187d.f17ca8",
+        "name": "Detecta xícara",
+        "server": "b8c951245b20ea89",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "0.05",
+        "halt_if_type": "num",
+        "halt_if_compare": "lt",
+        "entity_id": "sensor.detector_de_xicara",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 860,
+        "y": 660,
+        "wires": [
+            [
+                "af721901d1ad4dd0"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "af721901d1ad4dd0",
+        "type": "api-current-state",
+        "z": "f6f2187d.f17ca8",
+        "name": "Nível de água",
+        "server": "b8c951245b20ea89",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "0.1",
+        "halt_if_type": "num",
+        "halt_if_compare": "gt",
+        "entity_id": "sensor.nivel_de_agua",
+        "state_type": "num",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1140,
+        "y": 580,
+        "wires": [
+            [
+                "9c39d2a8ad5159b9",
+                "594095374ac778d6"
+            ],
+            [
+                "75aca72b5816df4a"
+            ]
+        ]
+    },
+    {
+        "id": "ac468717bb765078",
+        "type": "api-call-service",
+        "z": "f6f2187d.f17ca8",
+        "name": "Ligar bomba",
+        "server": "b8c951245b20ea89",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "switch",
+        "service": "turn_on",
+        "areaId": [
+            "quarto"
+        ],
+        "deviceId": [
+            "d93535cf5896c22de812288298c4d5c4"
+        ],
+        "entityId": [
+            "switch.bomba"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1310,
+        "y": 420,
+        "wires": [
+            [
+                "8dd6e47d28eec29a"
+            ]
+        ]
+    },
+    {
+        "id": "75aca72b5816df4a",
+        "type": "api-call-service",
+        "z": "f6f2187d.f17ca8",
+        "name": "Desligar bomba",
+        "server": "b8c951245b20ea89",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "switch",
+        "service": "turn_off",
+        "areaId": [
+            "quarto"
+        ],
+        "deviceId": [
+            "d93535cf5896c22de812288298c4d5c4"
+        ],
+        "entityId": [
+            "switch.bomba"
+        ],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1360,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c39d2a8ad5159b9",
+        "type": "api-current-state",
+        "z": "f6f2187d.f17ca8",
+        "name": "Estado bomba",
+        "server": "b8c951245b20ea89",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "switch.bomba",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 1100,
+        "y": 480,
+        "wires": [
+            [
+                "8dd6e47d28eec29a"
+            ],
+            [
+                "ac468717bb765078"
+            ]
+        ]
+    },
+    {
+        "id": "8dd6e47d28eec29a",
+        "type": "delay",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 930,
+        "y": 580,
+        "wires": [
+            [
+                "af721901d1ad4dd0"
+            ]
+        ]
+    },
+    {
+        "id": "594095374ac778d6",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "3541bfef741c1226",
+        "type": "api-call-service",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "server": "b8c951245b20ea89",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "script",
+        "service": "activate_alexa_actionable_notification",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\t    \"text\": \"Muito legal\",\t    \"event_id\": \"falar_muito_legal\",\t    \"alexa_device\": \"media_player.echo_dot_de_henrique\"\t}",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 890,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c59073ef459fa78",
+        "type": "server-events",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "server": "b8c951245b20ea89",
+        "version": 1,
+        "event_type": "",
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "waitForRunning": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "$outputData(\"eventData\").event_type",
+                "valueType": "jsonata"
+            }
+        ],
+        "x": 640,
+        "y": 800,
+        "wires": [
+            [
+                "2a7e856e419c7bcd"
+            ]
+        ]
+    },
+    {
+        "id": "2a7e856e419c7bcd",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "9b39b857fdca7e7c",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 560,
+        "y": 920,
+        "wires": [
+            [
+                "3541bfef741c1226"
+            ]
+        ]
+    },
+    {
+        "id": "ecbb860b7b3b9a2a",
+        "type": "api-call-service",
+        "z": "f6f2187d.f17ca8",
+        "name": "Display - linha 1",
+        "server": "b8c951245b20ea89",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_text",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_text.display_line_1"
+        ],
+        "data": "{\"value\":\"O melhor nome eh\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 800,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "919c468208d0dc5a",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 540,
+        "y": 1040,
+        "wires": [
+            [
+                "ecbb860b7b3b9a2a",
+                "3abf200bbd2418ac"
+            ]
+        ]
+    },
+    {
+        "id": "3abf200bbd2418ac",
+        "type": "api-call-service",
+        "z": "f6f2187d.f17ca8",
+        "name": "Display - linha 2",
+        "server": "b8c951245b20ea89",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "input_text",
+        "service": "set_value",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "input_text.display_line_2",
+            "input_text.oled_display"
+        ],
+        "data": "{\"value\":\"HENRIQUE!\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 800,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b8c951245b20ea89",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 2,
+        "addon": false,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": "30"
+    }
+]
