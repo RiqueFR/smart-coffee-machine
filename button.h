@@ -3,7 +3,7 @@
 
 #include "esphome.h"
 
-class Button {
+class MyButton {
     private:
         int pin;
         unsigned long debounceTime;
@@ -12,7 +12,7 @@ class Button {
         int lastStatus;
     
     public:
-        Button(int pin) {
+        MyButton(int pin) {
             this->pin = pin;
             this->debounceTime = 50;
             this->lastBebounceTime = 0;
@@ -42,7 +42,7 @@ class Button {
         }
 
 
-        ~Button(){}
+        ~MyButton(){}
 };
 
 #endif //BUTTON_H
