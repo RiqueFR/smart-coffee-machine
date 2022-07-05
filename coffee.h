@@ -49,6 +49,11 @@ class Coffee : public Ultrasonic {
         MyButton buttonRemoveCup = MyButton(27);
 
         bool hasCup = false;
+
+        // states
+        bool idle = true;
+        bool fill = false;
+        bool drain = false;
     
     public:
         Coffee(int maxCupAmount) {
@@ -65,20 +70,90 @@ class Coffee : public Ultrasonic {
         }
 
 
-        void loop() {
-            float distanceMm = maxMm;
+        // return true if the coffee maxine still needs to fill up
+        bool fill_up() {
+            float distanceMm;
+            // check if the machine fill with the correct amount of cups
+            if(actualQtdCup < requestedCups) {
+                distanceMm = ultrasonic.getDistanceMm();
 
-            if (buttonRequest.wasPressed() && !buttonRequestPressed) {
+                lcd.setCursor(0,1);
+                lcd.printf("Status: Enchendo");
+
+                if(distanceMm > maxMm) {
+                    return true;
+                }
+
+                ESP_LOGD("custom", "Enchendo reservatorio ++++++++++++++");
+                ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
+                // Serial.print("Tem xícara: ");
+                // ESP_LOGD("custom", hasCup);
+
+                actualQtdCup = (maxMm - distanceMm) / mmToCups;
+                ESP_LOGD("custom", "Quantidade atual de xícaras: %d", actualQtdCup);
+
+                return true;
+            }
+            return false;
+        }
+
+        // return true if the coffee maxine still needs to drain out
+        bool drain_out() {
+            float distanceMm;
+            // check if the machine emptied
+            if(actualQtdCup > 0) {
+                distanceMm = ultrasonic.getDistanceMm();
+
+                lcd.setCursor(0,1);
+                lcd.printf("Status: Coando  ");
+
+                if(distanceMm > maxMm) {
+                    return true;
+                }
+
+                ESP_LOGD("custom", "Esvaziando reservatorio -------------");
+                ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
+
+                actualQtdCup = (maxMm - distanceMm) / mmToCups;
+                ESP_LOGD("custom", "Quantidade atual de xícaras: %d", actualQtdCup);
+
+                return true;
+            }
+            return false;
+        }
+
+        void loop() {
+            if (buttonRequest.wasPressed() && !buttonRequestPressed && idle) {
                 ESP_LOGD("custom", "Apertou o botão de request");
                 buttonRequestPressed = true;
             }
 
-            if(buttonRequestPressed && requestedCups == 0) {
+            if(buttonRequestPressed && requestedCups == 0 && idle) {
                 ESP_LOGD("custom", "Primeiro adicione a quantidade de xícaras que deseja");
                 buttonRequestPressed = false;
             }
 
-            if(buttonRequestPressed && requestedCups > 0) {
+            if(fill)
+                fill = fill_up();
+            // if machine stop filling, set some variables and change states
+            if(!fill && !idle && !drain) {
+                requestedCups = 0;
+                buttonRequestPressed = false;
+                digitalWrite(ledBuiltIn, LOW);
+                digitalWrite(portaReleBomba, LOW);
+                drain = true;
+            }
+
+            if(drain)
+                drain = drain_out();
+            // if machine stop drainning, set some variables and change states
+            if(!fill && !idle && !drain) {
+                digitalWrite(portaReleCoffe, LOW);
+                lcd.clear();
+                idle = true;
+            }
+
+            if(buttonRequestPressed && requestedCups > 0 && idle) {
                 this->hasCup = cup.checkCup();
                 if(this->hasCup) {
                     ESP_LOGD("custom", "Tem xícara");
@@ -87,66 +162,19 @@ class Coffee : public Ultrasonic {
                     digitalWrite(portaReleCoffe, HIGH);
                     digitalWrite(ledBuiltIn, HIGH);
 
-                    // enchendo o reservatorio
-                    while(actualQtdCup < requestedCups) {
-                        distanceMm = ultrasonic.getDistanceMm();
-                        // hasCup = cup.checkCup();
-
-                        lcd.setCursor(0,1);
-                        lcd.printf("Status: Enchendo");
-
-                        if(distanceMm > maxMm) {
-                            continue;
-                        }
-
-                        ESP_LOGD("custom", "Enchendo reservatorio ++++++++++++++");
-                        ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
-                        // Serial.print("Tem xícara: ");
-                        // ESP_LOGD("custom", hasCup);
-
-
-                        actualQtdCup = (maxMm - distanceMm) / mmToCups;
-                        ESP_LOGD("custom", "Quantidade atual de xícaras: %d", actualQtdCup);
-
-                        delay(200);
-                    }
-                    requestedCups = 0;
-                    buttonRequestPressed = false;
-                    digitalWrite(ledBuiltIn, LOW);
-                    digitalWrite(portaReleBomba, LOW);
-                    distanceMm = ultrasonic.getDistanceMm();
-                    while(actualQtdCup > 0) {// && hasCup) { // espera reservatorio esvaziar
-                        distanceMm = ultrasonic.getDistanceMm();
-
-                        lcd.setCursor(0,1);
-                        lcd.printf("Status: Coando  ");
-
-                        // hasCup = cup.checkCup();
-                        if(distanceMm > maxMm) {
-                            continue;
-                        }
-
-                        ESP_LOGD("custom", "Esvaziando reservatorio -------------");
-                        ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
-                        actualQtdCup = (maxMm - distanceMm) / mmToCups;
-                        ESP_LOGD("custom", "Quantidade atual de xícaras: %d", actualQtdCup);
-
-                        delay(200);
-                    }
-
-                    digitalWrite(portaReleCoffe, LOW);
-                    lcd.clear();
+                    idle = false;
+                    fill = true;
                 }
             }
 
-            if (buttonAddCup.wasPressed()) {
+            if (buttonAddCup.wasPressed() && idle) {
                 ESP_LOGD("custom", "Apertou o botão de addCup");
                 if(requestedCups < maxCupAmount)
                     requestedCups++;
                 ESP_LOGD("custom", "Quantidade de xícaras pedidas: %d", requestedCups);
                 lcd.clear();
             }
-            if (buttonRemoveCup.wasPressed()) {
+            if (buttonRemoveCup.wasPressed() && idle) {
                 ESP_LOGD("custom", "Apertou o botão de removeCup");
                 if( requestedCups > 0)
                     requestedCups--;
