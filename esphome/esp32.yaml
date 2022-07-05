@@ -20,6 +20,7 @@ ota:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+  
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -35,6 +36,13 @@ sensor:
     name: "Nível de água"
     update_interval: 0.5s
     id: sensor_watter
+    on_value_range:
+      below: 0.05
+      then:
+        - switch.turn_off:
+            id: switch_pump
+        - switch.turn_off:
+            id: switch_coffee
 
   - platform: ultrasonic
     trigger_pin: 32 
@@ -98,9 +106,13 @@ switch:
   - platform: gpio
     pin: 2
     name: "Bomba"
+    id: switch_pump
+    restore_mode: ALWAYS_OFF
   - platform: gpio
     pin: 12
     name: "Cafeteira"
+    id: switch_coffee
+    restore_mode: ALWAYS_OFF
     
 text_sensor:
   - platform: homeassistant    
@@ -124,3 +136,13 @@ display:
       it.printf(0, 0, "%s",id(display_line_1).state.c_str());
       it.printf(0, 1, "%s",id(display_line_2).state.c_str());
 
+interval:
+  - interval: 1s
+    then:
+      if:
+        condition:
+          not:
+            wifi.connected:
+        then:
+          - switch.turn_off: switch_pump
+          - switch.turn_off: switch_coffee
