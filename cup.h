@@ -6,7 +6,7 @@
 class Cup : public Ultrasonic {
     
     public:
-        Cup(int trigPin, int echoPin);
+        Cup(int trigPin, int echoPin)
             : Ultrasonic(trigPin, echoPin) {}
 
         bool checkCup() {

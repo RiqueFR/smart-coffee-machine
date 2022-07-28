@@ -132,6 +132,21 @@ class Coffee : public Ultrasonic {
                 ESP_LOGD("custom", "Primeiro adicione a quantidade de xícaras que deseja");
                 buttonRequestPressed = false;
             }
+            //ESP_LOGD("custom", "idle: %d request: %d", idle, buttonRequestPressed);
+
+            if(buttonRequestPressed && requestedCups > 0 && idle) {
+                this->hasCup = cup.checkCup();
+                if(this->hasCup) {
+                    ESP_LOGD("custom", "Tem xícara");
+                    buttonRequestPressed = false;
+                    digitalWrite(portaReleBomba, HIGH);
+                    digitalWrite(portaReleCoffe, HIGH);
+                    digitalWrite(ledBuiltIn, HIGH);
+
+                    idle = false;
+                    fill = true;
+                }
+            }
 
             if(fill)
                 fill = fill_up();
@@ -153,20 +168,6 @@ class Coffee : public Ultrasonic {
                 idle = true;
             }
 
-            if(buttonRequestPressed && requestedCups > 0 && idle) {
-                this->hasCup = cup.checkCup();
-                if(this->hasCup) {
-                    ESP_LOGD("custom", "Tem xícara");
-                    buttonRequestPressed = false;
-                    digitalWrite(portaReleBomba, HIGH);
-                    digitalWrite(portaReleCoffe, HIGH);
-                    digitalWrite(ledBuiltIn, HIGH);
-
-                    idle = false;
-                    fill = true;
-                }
-            }
-
             if (buttonAddCup.wasPressed() && idle) {
                 ESP_LOGD("custom", "Apertou o botão de addCup");
                 if(requestedCups < maxCupAmount)
@@ -186,7 +187,18 @@ class Coffee : public Ultrasonic {
             lcd.setCursor(0,0);
             lcd.printf("xicaras: %d", requestedCups);
 
-            delay(50);
+            delay(100);
+        }
+
+        void setRequestCup(int qtt) {
+            this->requestedCups = qtt;
+            this->buttonRequestPressed = true;
+        }
+        
+        int getStatus() {
+            if(this->idle) return 1;
+            else if(this->fill) return 2;
+            else return 3;
         }
 
         ~Coffee(){}
