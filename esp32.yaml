@@ -1,0 +1,93 @@
+esphome:
+  name: esp32
+  includes:
+    - custom_component.h
+    - ultrasonic.h
+    - button.h
+    - cup.h
+    - coffee.h
+  libraries:
+    - "marcoschwartz/LiquidCrystal_I2C"
+    - "Wire"
+  platformio_options:
+    lib_ldf_mode: chain
+    lib_dps: marcoschwartz/LiquidCrystal_I2C@^1.1.4, Wire
+
+esp32:
+  board: esp32dev
+  #framework:
+    #type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: "d495d345fda74a6165c50081bdd87617"
+
+wifi:
+  ssid: !secret wifi_henrique
+  password: !secret wifi_h_password
+  # manual_ip:
+  #   static_ip: 192.168.85.104
+  #   gateway: 192.168.85.1
+  #   subnet: 255.255.255.0
+  #   #static_ip: 192.168.15.184
+  #   #gateway: 192.168.15.1
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp32 Fallback Hotspot"
+    password: "hCMZKHidgK5x"
+
+captive_portal:
+
+#i2c:
+#display:
+
+custom_component:
+  lambda: |-
+    auto my_sensor = new MyCustomComponent();
+    App.register_component(my_sensor);
+    return {my_sensor};
+  
+  components:
+  - id: custom_comp
+
+text_sensor:
+- platform: custom
+  lambda: |-
+    MyCustomTextSensor *other = ((MyCustomComponent*)id(custom_comp))->custom_sensor;
+    App.register_component(other);
+    return {other};
+    
+  text_sensors:
+  - name: "CUSTOM"
+
+number:
+  - platform: template
+    name: "Number"
+    min_value: 0
+    max_value: 30
+    step: 1
+    optimistic: true
+    id: my_number
+    
+  - platform: template
+    name: "Outro"
+    min_value: 0
+    max_value: 30
+    step: 1
+    optimistic: true
+    id: my_number_outro
+
+button:
+  - platform: template
+    name: "Pedir"
+    icon: "mdi:coffee"
+    on_press:
+      - lambda: |-
+          int val = id(my_number).state;
+          ((MyCustomComponent *)id(custom_comp))->set_level(val);
