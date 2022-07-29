@@ -16,11 +16,11 @@ class Coffee : public Ultrasonic {
         const int trigPinCup = 18;
         const int echoPinCup = 5;
         const int trigPinWat = 32;
-        const int echoPinWat = 35;
+        const int echoPinWat = 33;
 
-        const int buttonRequestPin = 25; // laranja
-        const int buttonAddCupPin = 26; // azul
-        const int buttonRemoveCupPin = 27;
+        const int buttonRequestPin = 13; // laranja
+        const int buttonAddCupPin = 12; // azul
+        const int buttonRemoveCupPin = 14;
 
         int ledBuiltIn = 2;
 
@@ -30,8 +30,8 @@ class Coffee : public Ultrasonic {
         const int mmToCups = 30;
         const int maxMm = 200;
 
-        const int portaReleBomba = 2;
-        const int portaReleCoffe = 12;
+        const int portaReleBomba = 19;
+        const int portaReleCoffe = 2;
 
         bool buttonRequestPressed = false;
 
@@ -39,9 +39,11 @@ class Coffee : public Ultrasonic {
         int lcdColumns = 16;
         int lcdRows = 2;
 
+        // slc -> 22
+        // sla -> 21
         LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x3F, lcdColumns, lcdRows);
 
-        Ultrasonic ultrasonic = Ultrasonic(this->trigPinWat, this->echoPinWat);;
+        Ultrasonic ultrasonic = Ultrasonic(this->trigPinWat, this->echoPinWat);
         Cup cup = Cup(this->trigPinCup, this->echoPinCup);
 
         MyButton buttonRequest = MyButton(25);
