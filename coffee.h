@@ -46,9 +46,9 @@ class Coffee : public Ultrasonic {
         Ultrasonic ultrasonic = Ultrasonic(this->trigPinWat, this->echoPinWat);
         Cup cup = Cup(this->trigPinCup, this->echoPinCup);
 
-        MyButton buttonRequest = MyButton(25);
-        MyButton buttonAddCup = MyButton(26);
-        MyButton buttonRemoveCup = MyButton(27);
+        MyButton buttonRequest = MyButton(13);
+        MyButton buttonAddCup = MyButton(12);
+        MyButton buttonRemoveCup = MyButton(14);
 
         bool hasCup = false;
 
@@ -143,7 +143,7 @@ class Coffee : public Ultrasonic {
                     buttonRequestPressed = false;
                     digitalWrite(portaReleBomba, HIGH);
                     digitalWrite(portaReleCoffe, HIGH);
-                    digitalWrite(ledBuiltIn, HIGH);
+                    //digitalWrite(ledBuiltIn, HIGH);
 
                     idle = false;
                     fill = true;
@@ -156,7 +156,8 @@ class Coffee : public Ultrasonic {
             if(!fill && !idle && !drain) {
                 requestedCups = 0;
                 buttonRequestPressed = false;
-                digitalWrite(ledBuiltIn, LOW);
+                //digitalWrite(ledBuiltIn, LOW);
+                digitalWrite(portaReleCoffe, HIGH);
                 digitalWrite(portaReleBomba, LOW);
                 drain = true;
             }
@@ -166,6 +167,7 @@ class Coffee : public Ultrasonic {
             // if machine stop drainning, set some variables and change states
             if(!fill && !idle && !drain) {
                 digitalWrite(portaReleCoffe, LOW);
+                digitalWrite(portaReleBomba, LOW);
                 lcd.clear();
                 idle = true;
             }
