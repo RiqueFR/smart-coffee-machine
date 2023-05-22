@@ -11,7 +11,7 @@
 
 class Coffee : public Ultrasonic {
     private:
-        int maxCupAmount = 30;
+        int maxCupAmount = 15;
 
         const int trigPinCup = 18;
         const int echoPinCup = 5;
@@ -27,8 +27,9 @@ class Coffee : public Ultrasonic {
         int actualQtdCup = 0;
         int requestedCups = 0;
 
-        const int mmToCups = 30;
-        const int maxMm = 200;
+        const float  mmToCups = 6.5;
+        const float  maxMm = 157;
+        float lastRead = 157;
 
         const int portaReleBomba = 19;
         const int portaReleCoffe = 2;
@@ -73,11 +74,13 @@ class Coffee : public Ultrasonic {
 
 
         // return true if the coffee maxine still needs to fill up
-        bool fill_up() {
-            float distanceMm;
+        bool fill_up(float distanceMm) {
+            ESP_LOGD("custom", "Enchendo reservatorio ++++++++++++++");
+            ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
             // check if the machine fill with the correct amount of cups
             if(actualQtdCup < requestedCups) {
-                distanceMm = ultrasonic.getDistanceMm();
+                if(distanceMm < 30)
+                    return true;
 
                 lcd.setCursor(0,1);
                 lcd.printf("Status: Enchendo");
@@ -85,11 +88,6 @@ class Coffee : public Ultrasonic {
                 if(distanceMm > maxMm) {
                     return true;
                 }
-
-                ESP_LOGD("custom", "Enchendo reservatorio ++++++++++++++");
-                ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
-                // Serial.print("Tem xícara: ");
-                // ESP_LOGD("custom", hasCup);
 
                 actualQtdCup = (maxMm - distanceMm) / mmToCups;
                 ESP_LOGD("custom", "Quantidade atual de xícaras: %d", actualQtdCup);
@@ -100,31 +98,27 @@ class Coffee : public Ultrasonic {
         }
 
         // return true if the coffee maxine still needs to drain out
-        bool drain_out() {
-            float distanceMm;
+        bool drain_out(float distanceMm) {
             // check if the machine emptied
-            if(actualQtdCup > 0) {
-                distanceMm = ultrasonic.getDistanceMm();
-
-                lcd.setCursor(0,1);
-                lcd.printf("Status: Coando  ");
-
-                if(distanceMm > maxMm) {
-                    return true;
-                }
-
-                ESP_LOGD("custom", "Esvaziando reservatorio -------------");
-                ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
-
-                actualQtdCup = (maxMm - distanceMm) / mmToCups;
-                ESP_LOGD("custom", "Quantidade atual de xícaras: %d", actualQtdCup);
-
+            lcd.setCursor(0,1);
+            lcd.printf("Status: Coando  ");
+            ESP_LOGD("custom", "Esvaziando reservatorio -------------");
+            ESP_LOGD("custom", "Distance (mm): %f", distanceMm);
+            if(distanceMm < maxMm || distanceMm > 165) {
                 return true;
             }
             return false;
         }
 
+        float distance_difference(float distanceMm) {
+            float dif = distanceMm - lastRead;
+            if(dif < 0) dif *= -1;
+            return dif;
+        }
+
         void loop() {
+            float distanceMm;
+            //ESP_LOGD("custom", "sensor: %.2f ==============", ultrasonic.getDistanceMm());
             if (buttonRequest.wasPressed() && !buttonRequestPressed && idle) {
                 ESP_LOGD("custom", "Apertou o botão de request");
                 buttonRequestPressed = true;
@@ -150,8 +144,13 @@ class Coffee : public Ultrasonic {
                 }
             }
 
-            if(fill)
-                fill = fill_up();
+            if(fill) {
+                distanceMm = ultrasonic.getDistanceMm();
+                if(distance_difference(distanceMm) < 20) {
+                    fill = fill_up(distanceMm);
+                }
+                lastRead = distanceMm;
+            }
             // if machine stop filling, set some variables and change states
             if(!fill && !idle && !drain) {
                 requestedCups = 0;
@@ -159,11 +158,17 @@ class Coffee : public Ultrasonic {
                 //digitalWrite(ledBuiltIn, LOW);
                 digitalWrite(portaReleCoffe, HIGH);
                 digitalWrite(portaReleBomba, LOW);
+                actualQtdCup = 0;
                 drain = true;
             }
 
-            if(drain)
-                drain = drain_out();
+            if(drain) {
+                distanceMm = ultrasonic.getDistanceMm();
+                if(distance_difference(distanceMm) < 20) {
+                    drain = drain_out(distanceMm);
+                }
+                lastRead = distanceMm;
+            }
             // if machine stop drainning, set some variables and change states
             if(!fill && !idle && !drain) {
                 digitalWrite(portaReleCoffe, LOW);

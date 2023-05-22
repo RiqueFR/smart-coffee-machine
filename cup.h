@@ -12,11 +12,12 @@ class Cup : public Ultrasonic {
         bool checkCup() {
             float distance = this->getDistanceMm();
 
-            while(distance > 300){
+            for(int i = 0; i < 5; i++){
                 distance = this->getDistanceMm();
+                if(distance < 300) break;
             }
 
-            return distance < 50;    
+            return distance < 70;    
         }
 
         ~Cup(){}

@@ -15,8 +15,6 @@ esphome:
 
 esp32:
   board: esp32dev
-  #framework:
-    #type: arduino
 
 # Enable logging
 logger:
@@ -28,14 +26,8 @@ ota:
   password: "d495d345fda74a6165c50081bdd87617"
 
 wifi:
-  ssid: !secret wifi_henrique
-  password: !secret wifi_h_password
-  # manual_ip:
-  #   static_ip: 192.168.85.104
-  #   gateway: 192.168.85.1
-  #   subnet: 255.255.255.0
-  #   #static_ip: 192.168.15.184
-  #   #gateway: 192.168.15.1
+  ssid: !secret wifi_id
+  password: !secret wifi_password
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -43,9 +35,6 @@ wifi:
     password: "hCMZKHidgK5x"
 
 captive_portal:
-
-#i2c:
-#display:
 
 custom_component:
   lambda: |-

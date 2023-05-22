@@ -18,6 +18,10 @@ class Ultrasonic {
             this->trigPin = trigPin;
             this->echoPin = echoPin;
 
+            if(trigPin == 1)
+                pinMode(1, FUNCTION_3);
+            if(echoPin == 3)
+                pinMode(3, FUNCTION_3);
             pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
             pinMode(echoPin, INPUT); // Sets the echoPin as an Input
         }
@@ -37,7 +41,6 @@ class Ultrasonic {
             // Calculate the distance
             return duration * SOUND_SPEED/2;
         }
-
 
         ~Ultrasonic(){}
 };

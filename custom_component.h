@@ -1,6 +1,6 @@
 #include "esphome.h"
 #include <string>
-//#include "coffee.h"
+#include "coffee.h"
 
 //using namespace esphome;
 
@@ -33,7 +33,7 @@ class MyCustomTextSensor : public PollingComponent, public TextSensor {
 class MyCustomComponent : public PollingComponent {
  public:
   MyCustomTextSensor *custom_sensor = new MyCustomTextSensor();
-  //Coffee coffee = Coffee(30);
+  Coffee coffee = Coffee(30);
 
   int count = 0;
 
@@ -41,37 +41,37 @@ class MyCustomComponent : public PollingComponent {
 
   void setup() override {
     pinMode(2, OUTPUT);
-    //coffee.setup();
+    coffee.setup();
   }
 
   void loop() override {
-    //coffee.loop();
+    coffee.loop();
   }
 
   void update() override {
     // This is the actual sensor reading logic.
 	//ESP_LOGD("custom", "sensor %d", custom_sensor->get_val());
-    if(count%2)
-      custom_sensor->receive_value("Hello World");
-    else
-      custom_sensor->receive_value("Hello Henrique");
-
-    count++;
-    //int coffeeStatus = coffee.getStatus();
-	//if(coffeeStatus == 1)
-		//custom_sensor->receive_value("Idle");
-	//else if(coffeeStatus == 2)
-		//custom_sensor->receive_value("Filling");
+    //if(count%2)
+      //custom_sensor->receive_value("Hello World");
     //else
-		//custom_sensor->receive_value("Draining");
+      //custom_sensor->receive_value("Hello Henrique");
+
+    //count++;
+    int coffeeStatus = coffee.getStatus();
+	if(coffeeStatus == 1)
+		custom_sensor->receive_value("Idle");
+	else if(coffeeStatus == 2)
+		custom_sensor->receive_value("Filling");
+    else
+		custom_sensor->receive_value("Draining");
   }
 
   void set_level(int val) {
 	ESP_LOGD("custom", "cups %d", val);
-    //coffee.setRequestCup(val);
-    if(val % 2)
-      digitalWrite(2, 1);
-    else 
-      digitalWrite(2, 0);
+    coffee.setRequestCup(val);
+    //if(val % 2)
+      //digitalWrite(2, 1);
+    //else 
+      //digitalWrite(2, 0);
   }
 };
